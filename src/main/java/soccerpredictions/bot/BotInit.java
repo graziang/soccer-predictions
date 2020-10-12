@@ -25,12 +25,6 @@ public class BotInit {
     @EventListener(ApplicationReadyEvent.class)
     public void init(){
         ApiContextInitializer.init();
-        TelegramBotsApi api = new TelegramBotsApi();
-        try {
-            api.registerBot(new SoccerBot(predictionService));
-        } catch (TelegramApiRequestException e) {
-           log.error(e.toString());
-        }
     }
 
 
