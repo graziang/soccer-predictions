@@ -155,7 +155,7 @@ public class PredictionService {
     public String getPartiteMessage(List<Prediction> predictions) {
         StringBuilder message = new StringBuilder();
 
-        if(predictions.size() > 5) {
+        if(predictions.size() > 10) {
             predictions = predictions.subList(0, 10);
         }
         for (Prediction prediction: predictions)  {
