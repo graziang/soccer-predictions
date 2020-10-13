@@ -3,6 +3,7 @@ package soccerpredictions.domain;
 import lombok.Data;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Data
 public class Prediction {
@@ -19,4 +20,20 @@ public class Prediction {
     public Double probability;
     public Double quote;
     public String predictionType;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Prediction that = (Prediction) o;
+        return Objects.equals(id, that.id) ||
+                (Objects.equals(away_team, that.away_team) &&
+                Objects.equals(home_team, that.home_team) &&
+                Objects.equals(start_date, that.start_date));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, away_team, home_team, start_date);
+    }
 }
