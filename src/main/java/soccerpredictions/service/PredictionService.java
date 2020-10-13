@@ -89,6 +89,7 @@ public class PredictionService {
     public String bestRaddoppioAll(){
         return bestRaddoppio(applicationProperties.getCases());
     }
+
     private String bestRaddoppio(List<String> cases){
         List<Prediction> predictions = new ArrayList<>();
         for (String type: cases) {
@@ -98,7 +99,7 @@ public class PredictionService {
         List<Bolla> bolle = new ArrayList<>();
         for (Prediction prediction1: predictions) {
             for (Prediction prediction2: predictions) {
-                if((!prediction1.getId().equals(prediction2.getId()) || (prediction1.getId().equals(prediction2.getId()) && prediction1.getPredictionType().equals(prediction2.getPredictionType()))) && prediction1.getQuote() != null && prediction2.getQuote() != null) {
+                if((!prediction1.getId().equals(prediction2.getId()) || (prediction1.getId().equals(prediction2.getId()) && !prediction1.getPredictionType().equals(prediction2.getPredictionType()))) && prediction1.getQuote() != null && prediction2.getQuote() != null) {
                     if(prediction1.getQuote() * prediction2.getQuote() > 2) {
                           if(prediction1.getProbability() > 0.5 && prediction2.getProbability() > 0.5) {
                         Bolla bolla = new Bolla();
