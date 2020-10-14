@@ -9,7 +9,11 @@ import org.springframework.stereotype.Component;
 import soccerpredictions.domain.Data;
 import soccerpredictions.domain.Prediction;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -34,8 +38,13 @@ public class PredictionAPIComponent {
             url += "?market=" + market;
         }
 
-         url += "&federation=UEFA";
+         //url += "&federation=UEFA";
 
+        String pattern = "yyyy-MM-dd";
+        DateFormat df = new SimpleDateFormat(pattern);
+        Date today = Calendar.getInstance().getTime();
+        String todayAsString = df.format(today);
+        url += "&iso_date="+todayAsString;
 
         try {
            Data data = restTemplate.getForObject(url, Data.class);
