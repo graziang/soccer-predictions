@@ -121,7 +121,12 @@ public class PredictionService {
         }
 
         bolle = bolle.stream().sorted((b1,b2) -> {
-            return b1.getProbability() < b2.getProbability() ? 1 : -1;
+            if( b1.getProbability() < b2.getProbability())
+                return 1;
+            if(b1.getProbability() > b2.getProbability())
+                return -1;
+            else
+                return 0;
         }).collect(Collectors.toList());
 
         int totPartite = predictions.size();
@@ -131,7 +136,7 @@ public class PredictionService {
 
         StringBuilder message = new StringBuilder();
         for (Bolla bolla: bolle) {
-            String raddoppio = String.format("RADDOPPIO: QUOTA: %.2f, PROBABILITA': %.2f PARTITE: %d\n", bolla.getQuota(), bolla.getProbability(), totPartite);
+            String raddoppio = String.format("RADDOPPIO: QUOTA: %.2f, PROBABILITA': %.2f PARTITE: %d\n", bolla.getQuota(), bolla.getProbability(), totPartite/cases.size());
             message.append(raddoppio);
             message.append(this.getPartiteMessage(bolla.getPartite()));
             message.append("\n");
@@ -170,7 +175,7 @@ public class PredictionService {
             String round = String.format("%.2f", probabilita*100);
             message.append("PROBABILITA': " + round + "%\n");
             message.append("QUOTA: " + quota + "\n");
-            message.append("ESITO': " + prediction.getPredictionType() + "\n\n");
+            message.append("ESITO: " + prediction.getPredictionType() + "\n\n");
 
         }
         return message.toString();
