@@ -17,6 +17,8 @@ public class ApplicationProperties {
 
     private List<String> cases;
 
+    private String cachePath;
+
     private List<String> caseClassic;
     private List<String> caseDoppiaChance;
     private List<String> caseGoal;

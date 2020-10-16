@@ -16,10 +16,12 @@ public class Prediction {
     public String competition_cluster;
     public String start_date;
     public String prediction;
+    public boolean is_expired;
     public Map<String, Object> probabilities;
     public Double probability;
     public Double quote;
     public String predictionType;
+    public String result;
 
     @Override
     public boolean equals(Object o) {

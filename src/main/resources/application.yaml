@@ -3,7 +3,8 @@ application:
   x-rapidapi-host: ${X-RAPIDAPI-HOST:football-prediction-api.p.rapidapi.com}
   x-rapidapi-key: ${X-RAPIDAPI-KEY:puppa}
   x-rapidapi-url: ${X-RAPIDAPI-URL:https://football-prediction-api.p.rapidapi.com}
-  cases: 1,2,X,OVER25,UNDER25,GOAL,NOGOAL,1X,X2
+  cases: UNDER35,1,1X,OVER25,UNDER25,X2
   caseClassic: 1,2,X
   caseDoppiaChance: 1X,X2
   caseGoal: OVER25,UNDER25,GOAL,NOGOAL
+  cachePath: ./cache
